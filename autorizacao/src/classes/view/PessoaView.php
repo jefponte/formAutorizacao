@@ -48,6 +48,12 @@ function mudarNome() {
 						<input type="text" name="bisavomaterno" id="bisavomaterno" /><br>
 						<label for="bisavomaterna">Nome de minha bisavó materna:</label><br>
 						<input type="text" name="bisavomaterna" id="bisavomaterna" /><br>
+						<label for="nascimento">Data de meu nascimento:</label><br>
+						<input type="date" name="nascimento" id="nascimento" /><br>
+						<label for="datacasamento">Data de Meu Casamento:</label><br>
+						<input type="date" name="datacasamento" id="datacasamento" /><br>
+						<label for="nomeconjuge">Nome de meu Cônjuge:</label><br>
+						<input type="text" name="nomeconjuge" id="nomeconjuge" /><br>
 						<label for="linkfoto">Minha Foto:</label><br>
 						<input type="file" name="linkfoto" id="linkfoto" required/><br>
 
@@ -107,6 +113,11 @@ function mudarNome() {
 	    echo 'Bisavó Paterna: '.$pessoa->getBisavopaterna().'<br>';
 	    echo 'Bisavô Materno: '.$pessoa->getBisavomaterno().'<br>';
 	    echo 'Bisavó Materna: '.$pessoa->getBisavomaterna().'<br>';
+	    
+	    
+	    echo 'Data de nascimento: '.date('d/m/Y', strtotime($pessoa->getNascimento())).'<br>';
+	    echo 'Data de Casamento: '.date('d/m/Y', strtotime($pessoa->getDatacasamento())).'<br>';
+	    echo 'Nome do Cônjuge: '.$pessoa->getNomeconjuge().'<br>';
 	    
 	    
 	  

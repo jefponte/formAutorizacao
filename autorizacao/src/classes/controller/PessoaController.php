@@ -64,6 +64,10 @@ class PessoaController
         $pessoa->setBisavopaterna($_POST['bisavopaterna']);
         $pessoa->setBisavomaterno($_POST['bisavomaterno']);
         $pessoa->setBisavomaterna($_POST['bisavomaterna']);
+		$pessoa->setNascimento ( $_POST ['nascimento'] );		
+		$pessoa->setDatacasamento ( $_POST['datacasamento'] );		
+		$pessoa->setNomeconjuge ( $_POST['nomeconjuge'] );	
+		
         $pessoa->setLinkfoto($novonome);
         if ($this->dao->inserir($pessoa)) {
             $sessao = new Sessao();
@@ -98,7 +102,10 @@ class PessoaController
                 'bisavopaterna' => $linha->getBisavopaterna(),
                 'bisavomaterno' => $linha->getBisavomaterno(),
                 'bisavomaterna' => $linha->getBisavomaterna(),
-                'linkfoto' => $linha->getLinkfoto()
+				'linkfoto' => $linha->getLinkfoto (), 
+				'nascimento' => $linha->getNascimento (), 
+				'datacasamento' => $linha->getDatacasamento (), 
+				'nomeconjuge' => $linha->getNomeconjuge ()
             
             );
         }

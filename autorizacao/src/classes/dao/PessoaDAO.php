@@ -12,8 +12,8 @@ class PessoaDAO extends DAO {
 	
 	public function inserir(Pessoa $pessoa){
 		
-		$sql = "INSERT INTO pessoa(nome, endereco, email, whatsapp, pai, mae, avopaterno, avopaterna, avomaterno, avomaterna, bisavopaterno, bisavopaterna, bisavomaterno, bisavomaterna, linkfoto)
-				VALUES(:nome, :endereco, :email, :whatsapp, :pai, :mae, :avopaterno, :avopaterna, :avomaterno, :avomaterna, :bisavopaterno, :bisavopaterna, :bisavomaterno, :bisavomaterna, :linkfoto)";
+	    $sql = "INSERT INTO pessoa(nome, endereco, email, whatsapp, pai, mae, avopaterno, avopaterna, avomaterno, avomaterna, bisavopaterno, bisavopaterna, bisavomaterno, bisavomaterna, linkfoto, nascimento, datacasamento, nomeconjuge)
+				VALUES(:nome, :endereco, :email, :whatsapp, :pai, :mae, :avopaterno, :avopaterna, :avomaterno, :avomaterna, :bisavopaterno, :bisavopaterna, :bisavomaterno, :bisavomaterna, :linkfoto, :nascimento, :datacasamento, :nomeconjuge)";
 			$nome = $pessoa->getNome();
 			$endereco = $pessoa->getEndereco();
 			$email = $pessoa->getEmail();
@@ -29,6 +29,9 @@ class PessoaDAO extends DAO {
 			$bisavomaterno = $pessoa->getBisavomaterno();
 			$bisavomaterna = $pessoa->getBisavomaterna();
 			$linkfoto = $pessoa->getLinkfoto();
+			$nascimento = $pessoa->getNascimento();
+			$datacasamento = $pessoa->getDatacasamento();
+			$nomeconjuge = $pessoa->getNomeconjuge();
 		try {
 			$db = $this->getConexao();
 			$stmt = $db->prepare($sql);		
@@ -47,6 +50,9 @@ class PessoaDAO extends DAO {
 			$stmt->bindParam("bisavomaterno", $bisavomaterno, PDO::PARAM_STR);		
 			$stmt->bindParam("bisavomaterna", $bisavomaterna, PDO::PARAM_STR);		
 			$stmt->bindParam("linkfoto", $linkfoto, PDO::PARAM_STR);
+			$stmt->bindParam("nascimento", $nascimento, PDO::PARAM_STR);
+			$stmt->bindParam("datacasamento", $datacasamento, PDO::PARAM_STR);
+			$stmt->bindParam("nomeconjuge", $nomeconjuge, PDO::PARAM_STR);
 			return $stmt->execute();
 		} catch(PDOException $e) {
 			echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -96,6 +102,9 @@ class PessoaDAO extends DAO {
 			$pessoa->setBisavomaterno( $linha ['bisavomaterno'] );
 			$pessoa->setBisavomaterna( $linha ['bisavomaterna'] );
 			$pessoa->setLinkfoto( $linha ['linkfoto'] );
+			$pessoa->setNascimento( $linha ['nascimento'] );
+			$pessoa->setDatacasamento( $linha ['datacasamento'] );
+			$pessoa->setNomeconjuge( $linha ['nomeconjuge'] );
 			$lista [] = $pessoa;
 		}
 		return $lista;
@@ -124,6 +133,9 @@ class PessoaDAO extends DAO {
 	        $pessoa->setBisavomaterno( $linha ['bisavomaterno'] );
 	        $pessoa->setBisavomaterna( $linha ['bisavomaterna'] );
 	        $pessoa->setLinkfoto( $linha ['linkfoto'] );
+	        $pessoa->setNascimento( $linha ['nascimento'] );
+	        $pessoa->setDatacasamento( $linha ['datacasamento'] );
+	        $pessoa->setNomeconjuge( $linha ['nomeconjuge'] );
 	    }
 	    return $pessoa;
 	}

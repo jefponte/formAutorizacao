@@ -22,6 +22,9 @@ class Pessoa {
 	private $bisavomaterno;
 	private $bisavomaterna;
 	private $linkfoto;
+	private $nascimento;
+	private $datacasamento;
+	private $nomeconjuge;
 	public function setId($id) {
 		$this->id = $id;
 	}
@@ -117,6 +120,24 @@ class Pessoa {
 	}
 	public function getLinkfoto() {
 		return $this->linkfoto;
+	}
+	public function setNascimento($nascimento) {
+	    $this->nascimento = $nascimento;
+	}
+	public function getNascimento() {
+	    return $this->nascimento;
+	}
+	public function setDatacasamento($datacasamento) {
+	    $this->datacasamento = $datacasamento;
+	}
+	public function getDatacasamento() {
+	    return $this->datacasamento;
+	}
+	public function setNomeconjuge($nomeconjuge) {
+	    $this->nomeconjuge = $nomeconjuge;
+	}
+	public function getNomeconjuge() {
+	    return $this->nomeconjuge;
 	}
 }
 ?>
