@@ -14,5 +14,8 @@ CREATE TABLE `pessoa` (
 `bisavopaterna`	TEXT,
 `bisavomaterno`	TEXT,
 `bisavomaterna`	TEXT,
-`linkfoto`	TEXT
+`linkfoto`	TEXT,
+`nascimento`	TEXT,
+`datacasamento`	TEXT,
+`nomeconjuge`	TEXT
 );
